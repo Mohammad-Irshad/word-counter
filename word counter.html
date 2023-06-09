@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+
+        body{
+            background-color: bisque;
+            padding: 0px 200px;
+        }
+        h1{
+            text-align: center;
+            background-color: aqua;
+        }
+        #textbox{
+            background-color: cadetblue;
+            border-color: aqua;  
+            width: 99% ;
+                       
+        }
+
+        p{
+            background-color: aqua;
+            padding: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            
+            
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Word Counter</h1>
+
+    <textarea rows="20" cols="50" id="textbox"></textarea>
+    
+    <p>
+        <span id="words">0</span> Words and <span id="char">0</span> Characters
+    </p>
+
+    <script>
+
+        let textbox = document.getElementById("textbox");
+        
+        textbox.addEventListener('input',function(){
+            var text = this.value;
+            
+
+           let char = text.length;
+           document.getElementById("char").innerHTML = char;
+
+           text = text.trim(); // Is function ke vajeh se starting or last ke space count nahi hote but sentance ke beech ke spcace count hote hai
+           
+           let words = text.split(" "); // Ye function bta rha hai space ke bat text ko split ker do or fir vo he ek word hai
+
+           let cleanText = words.filter(function(elm){ // Ye beech ke spaces ko ignore ker rha hai
+               return elm != "";
+           })
+           document.getElementById("words").innerHTML = cleanText.length;
+        })
+    </script>
+</body>
+</html>
